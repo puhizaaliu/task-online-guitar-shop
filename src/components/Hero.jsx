@@ -7,6 +7,7 @@ export default function Hero({
   siteLogoLabel = "VibeStrings",
   onBack,
   backLabel = "Back To List",
+  mode = "default",
 
   title,
   titleStart,
@@ -158,43 +159,80 @@ export default function Hero({
                 marginLeft: 8,
               }}
             >
-              <Box
-                component="img"
-                src={imageSrc}
-                alt={imageAlt}
-                sx={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: imageFit,
-                  objectPosition: "bottom"
-                }}
-              />
+            {mode === "logo" ? (
+                // Gradient + centered brand logo
+                <Box
+                    sx={{
+                    width: "700px",
+                    height: "600px",
+                    background: "linear-gradient(180deg, #FF8C60, #FF5B1C)",
+                    display: "flex",
+                    alignItems: "flex-start",
+                    justifyContent: "center",
+                    borderTopLeftRadius: curveRight ? { md: "0%" } : 0,
+                    borderBottomLeftRadius: curveRight ? { md: "390px" } : 0,
+                    borderTopRightRadius: !curveRight ? { md: "0%" } : 0,
+                    borderBottomRightRadius: curveRight ? { md: "160px" } : 0,
+                    marginTop: 20,
+                    marginLeft: -10,
+                    }}
+                >
+                    <Box
+                    component="img"
+                    src={imageSrc}
+                    alt={imageAlt}
+                    sx={{
+                        width: "65%",
+                        height: "65%",
+                        objectFit: "contain",
+                        mt: 5,
+                        ml: 5,
+                        opacity: "40%"
+                    }}
+                    />
+
+                </Box>
+                ) : (
+                // Default hero image behavior
+                <Box
+                    component="img"
+                    src={imageSrc}
+                    alt={imageAlt}
+                    sx={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: imageFit,
+                    objectPosition: "bottom"
+                    }}
+                />
+            )}
             </Box>
+            
           )}
           {siteLogoSrc && (
-    <Box
-      sx={{
-        position: "absolute",
-        bottom: 70,
-        right: "6%",
-        transform: "translateX(-50%)",
-        zIndex: 2,
-      }}
-    >
-      <Box
-        component="img"
-        src={siteLogoSrc}
-        alt={siteLogoLabel}
-        sx={{
-          backgroundColor: "#fff",
-          borderRadius: "50%",
-          width: 80,
-          height: 80,
-          p: 1.5,
-        }}
-      />
-    </Box>
-  )}
+            <Box
+            sx={{
+                position: "absolute",
+                bottom: 70,
+                right: "7%",
+                transform: "translateX(-50%)",
+                zIndex: 2,
+            }}
+            >
+            <Box
+                component="img"
+                src={siteLogoSrc}
+                alt={siteLogoLabel}
+                sx={{
+                backgroundColor: "#fff",
+                borderRadius: "50%",
+                width: 80,
+                height: 80,
+                p: 1.5,
+                }}
+            />
+            </Box>
+             )}
         </Grid>
       </Grid>
     </Box>
