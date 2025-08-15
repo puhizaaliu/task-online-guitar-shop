@@ -11,12 +11,23 @@ import { useTheme } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import { Card } from "@mui/material";
 import placeholderImg from "../assets/placeholder.jpg";
+import { useTranslation } from "react-i18next";
 
 export default function GuitarModels() {
   const { id } = useParams();
   const navigate = useNavigate();
   const theme = useTheme();
 
+  // make a slug from the brand name coming from API
+  const toSlug = (s) =>
+  (s || "")
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_|_$/g, "");
+    
+  const { t } = useTranslation();
+  
   // brand info query
   const {
     data: brandData,
@@ -27,7 +38,9 @@ export default function GuitarModels() {
   });
   const brand = brandData?.findUniqueBrand;
   const brandName = brand?.name;
-  const description = brandDescriptions[brandName] || "Ask ChatGPT.";
+  const slug = toSlug(brandName);
+  const description =  t(`brandDescriptions.${slug}`, { defaultValue: "" }) ||
+    brandDescriptions[brandName] || "Ask ChatGPT.";
 
   // models from brand's id query
   const {
@@ -102,8 +115,8 @@ export default function GuitarModels() {
     <>
       {/* Hero */}
       <Hero
-        titleStart="Play like a"
-        titleHighlight="Rock star"
+        titleStart={t("modelPage.titleStart")}
+        titleHighlight={t("modelPage.titleHighlight")}
         subtitle={description}
         imageSrc={brand?.image}
         imageAlt={brand?.name}
@@ -117,8 +130,10 @@ export default function GuitarModels() {
       {/* filtering and searchbar section */}
       <Box sx={{ px: 10, mt: 8, mb: 4 }}>
         <Typography variant="h4" fontWeight={700} textAlign="center" mb={4}>
-          Check out the{" "}
-          <span style={{ color: theme.palette.primary.main }}>Selection</span>
+            {t("modelPage.selectionTitleStart")}{" "}
+            <span style={{ color: theme.palette.primary.main }}>
+                {t("modelPage.selectionTitleHighlight")}
+            </span>
         </Typography>
 
         <Box display="flex" justifyContent="center" gap={2} flexWrap="wrap">

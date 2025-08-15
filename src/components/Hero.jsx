@@ -1,12 +1,13 @@
 import * as React from "react";
 import { Box, Typography, Stack, Button, Skeleton, Grid,} from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { useTranslation } from "react-i18next";
 
 export default function Hero({
   siteLogoSrc,
-  siteLogoLabel = "VibeStrings",
+  siteLogoLabel,
   onBack,
-  backLabel = "Back To List",
+  backLabel,
   mode = "default",
 
   title,
@@ -17,12 +18,23 @@ export default function Hero({
 
   variant = "photo",
   imageSrc,
-  imageAlt = "Hero image",
+  imageAlt,
   imageSide = "right",
   imageFit = "cover",
   loading = false,
 }) {
+  const { t } = useTranslation();
   const curveRight = imageSide === "right";
+
+  // i18n fallbacks
+  const resolvedSiteLogoLabel = siteLogoLabel ?? t("siteName");
+  const resolvedBackLabel = backLabel ?? t("backToList");
+  const resolvedImageAlt = imageAlt ?? t("hero.imageAlt");
+
+  const finalTitleStart = titleStart ?? t("hero.titleStart");
+  const finalTitleHighlight = titleHighlight ?? t("hero.titleHighlight");
+  const finalTitleEnd = titleEnd ?? t("hero.titleEnd");
+  const finalSubtitle = subtitle ?? t("hero.subtitle");
 
   const TitleNode = title ?? (
     <Typography
@@ -35,14 +47,14 @@ export default function Hero({
         padding: 10
       }}
     >
-      {titleStart}{" "}
-      {titleHighlight && (
-        <Box component="span" sx={{color: "primary.main" }}>
-          {titleHighlight}
+      {finalTitleStart}{" "}
+      {finalTitleHighlight && (
+        <Box component="span" sx={{ color: "primary.main" }}>
+          {finalTitleHighlight}
         </Box>
       )}{" "}
       <br />
-      {titleEnd}
+      {finalTitleEnd}
     </Typography>
   );
 
@@ -69,7 +81,7 @@ export default function Hero({
             startIcon={<ArrowBackIosNewIcon fontSize="inherit" />}
             onClick={onBack}
           >
-            {backLabel}
+            {resolvedBackLabel}
           </Button>
         )}
         {siteLogoSrc && (
@@ -77,21 +89,19 @@ export default function Hero({
             <Box
               component="img"
               src={siteLogoSrc}
-              alt={siteLogoLabel}
+              alt={resolvedSiteLogoLabel}
               sx={{ height: 70 }}
             />
             <Typography variant="subtitle1" sx={{ fontWeight: 500, fontSize: 25}}>
-              {siteLogoLabel}
+              {resolvedSiteLogoLabel}
             </Typography>
           </Stack>
         )}
       </Stack>
 
       {/* Main layout */}
-      <Grid
-        container
-        spacing={0}
-        direction={{
+      <Grid container spacing={0}
+          direction={{
           xs: "column-reverse",
           md: curveRight ? "row" : "row-reverse",
         }}
@@ -120,7 +130,7 @@ export default function Hero({
           ) : (
             <>
               {TitleNode}
-              {subtitle && (
+              {finalSubtitle  && (
                 <Typography
                   sx={{
                     mt: -2,
@@ -130,7 +140,7 @@ export default function Hero({
                     maxWidth: 560,
                   }}
                 >
-                  {subtitle}
+                  {finalSubtitle}
                 </Typography>
               )}
             </>
@@ -160,88 +170,86 @@ export default function Hero({
               }}
             >
             {mode === "logo" ? (
-  // Logo mode
-  <Box
-    sx={{
-      width: "700px",
-      height: "600px",
-      background: "linear-gradient(180deg, #FF8C60, #FF5B1C)",
-      display: "flex",
-      alignItems: "flex-start",
-      justifyContent: "center",
-      borderTopLeftRadius: curveRight ? { md: "0%" } : 0,
-      borderBottomLeftRadius: curveRight ? { md: "390px" } : 0,
-      borderTopRightRadius: !curveRight ? { md: "0%" } : 0,
-      borderBottomRightRadius: curveRight ? { md: "160px" } : 0,
-      marginTop: 20,
-      marginLeft: -10,
-    }}
-  >
-    <Box
-      component="img"
-      src={imageSrc}
-      alt={imageAlt}
-      sx={{
-        width: "65%",
-        height: "65%",
-        objectFit: "contain",
-        mt: 5,
-        ml: 5,
-        opacity: "40%",
-      }}
-    />
-  </Box>
-) : mode === "details" ? (
-  // Details mode
-  <Box
-    sx={{
-      width: "700px",
-      height: "600px",
-      background: "linear-gradient(180deg, #FF8C60, #FF5B1C)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      borderTopLeftRadius: curveRight ? { md: "0%" } : 0,
-      borderBottomLeftRadius: curveRight ? { md: "390px" } : 0,
-      borderTopRightRadius: !curveRight ? { md: "0%" } : 0,
-      borderBottomRightRadius: curveRight ? { md: "160px" } : 0,
-      marginTop: 20,
-      marginLeft: -10,
-    }}
-  >
-    <Box
-      component="img"
-      src={imageSrc}
-      alt={imageAlt}
-      sx={{
-        width: "65%",
-        height: "65%",
-        objectFit: "contain",
-        transform: "rotate(-45deg)", 
-        opacity: 1, 
-        mt: -10,
-        mr:-10,
-      }}
-    />
-  </Box>
-) : (
-  // Default mode
-  <Box
-    component="img"
-    src={imageSrc}
-    alt={imageAlt}
-    sx={{
-      width: "100%",
-      height: "100%",
-      objectFit: imageFit,
-      objectPosition: "bottom",
-    }}
-  />
-)}
-
-            </Box>
-            
-          )}
+            // Logo mode
+            <Box
+                sx={{
+                width: "700px",
+                height: "600px",
+                background: "linear-gradient(180deg, #FF8C60, #FF5B1C)",
+                display: "flex",
+                alignItems: "flex-start",
+                justifyContent: "center",
+                borderTopLeftRadius: curveRight ? { md: "0%" } : 0,
+                borderBottomLeftRadius: curveRight ? { md: "390px" } : 0,
+                borderTopRightRadius: !curveRight ? { md: "0%" } : 0,
+                borderBottomRightRadius: curveRight ? { md: "160px" } : 0,
+                marginTop: 20,
+                marginLeft: -10,
+                }}
+            >
+            <Box
+                component="img"
+                src={imageSrc}
+                alt={resolvedImageAlt}
+                sx={{
+                    width: "65%",
+                    height: "65%",
+                    objectFit: "contain",
+                    mt: 5,
+                    ml: 5,
+                    opacity: "40%",
+                }}
+            />
+        </Box>
+        ) : mode === "details" ? (
+            // Details mode
+            <Box
+                sx={{
+                width: "700px",
+                height: "600px",
+                background: "linear-gradient(180deg, #FF8C60, #FF5B1C)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                borderTopLeftRadius: curveRight ? { md: "0%" } : 0,
+                borderBottomLeftRadius: curveRight ? { md: "390px" } : 0,
+                borderTopRightRadius: !curveRight ? { md: "0%" } : 0,
+                borderBottomRightRadius: curveRight ? { md: "160px" } : 0,
+                marginTop: 20,
+                marginLeft: -10,
+                }}
+            >
+            <Box
+                component="img"
+                src={imageSrc}
+                alt={resolvedImageAlt}
+                sx={{
+                    width: "65%",
+                    height: "65%",
+                    objectFit: "contain",
+                    transform: "rotate(-45deg)", 
+                    opacity: 1, 
+                    mt: -10,
+                    mr:-10,
+                }}
+            />
+        </Box>
+        ) : (
+        // Default mode
+        <Box
+            component="img"
+            src={imageSrc}
+            alt={resolvedImageAlt}
+            sx={{
+            width: "100%",
+            height: "100%",
+            objectFit: imageFit,
+            objectPosition: "bottom",
+            }}
+        />
+        )}
+        </Box>
+        )}
           {siteLogoSrc && (
             <Box
             sx={{
@@ -255,7 +263,7 @@ export default function Hero({
             <Box
                 component="img"
                 src={siteLogoSrc}
-                alt={siteLogoLabel}
+                alt={resolvedSiteLogoLabel}
                 sx={{
                 backgroundColor: "#fff",
                 borderRadius: "50%",

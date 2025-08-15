@@ -8,11 +8,13 @@ import MusicianCard from "../components/MusicianCard";
 import {Box,Typography,Stack,Grid,Divider,} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Footer from "../components/Footer";
+import { useTranslation } from "react-i18next";
 
 export default function GuitarDetails() {
   const { brandId, modelId } = useParams();
   const navigate = useNavigate();
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const { data, loading, error } = useQuery(FIND_UNIQUE_MODEL, {
     variables: { brandId, modelId },
@@ -63,13 +65,13 @@ export default function GuitarDetails() {
             sx={tabStyles(selectedTab === "specs")}
             onClick={() => setSelectedTab("specs")}
           >
-            Specification
+            {t("detailsPage.tabs.specs")}
           </Box>
           <Box
             sx={tabStyles(selectedTab === "musicians")}
             onClick={() => setSelectedTab("musicians")}
           >
-            Who plays it?
+            {t("detailsPage.tabs.musicians")}
           </Box>
         </Stack>
 
@@ -81,27 +83,33 @@ export default function GuitarDetails() {
               {model?.description}
             </Typography>
             <ul style={{ fontSize: "1rem", lineHeight: "1.6", color: theme.palette.text.secondary }}>
-              {model?.specs?.bodyWood && <li>Body Wood: "{model.specs.bodyWood}"</li>}
-              {model?.specs?.neckWood && <li>Neck Wood: "{model.specs.neckWood}"</li>}
-              {model?.specs?.fingerboardWood && <li>Fingerboard: "{model.specs.fingerboardWood}"</li>}
-              {model?.specs?.pickups && <li>Pickups: "{model.specs.pickups}"</li>}
-              {model?.specs?.tuners && <li>Tuners: "{model.specs.tuners}"</li>}
-              {model?.specs?.scaleLength && <li>Scale Length: "{model.specs.scaleLength}"</li>}
-              {model?.specs?.bridge && <li>Bridge: "{model.specs.bridge}"</li>}
+              {model?.specs?.bodyWood && <li>{t("detailsPage.specs.bodyWood")}: "{model.specs.bodyWood}"</li>}
+              {model?.specs?.neckWood && <li>{t("detailsPage.specs.neckWood")}: "{model.specs.neckWood}"</li>}
+              {model?.specs?.fingerboardWood && <li>{t("detailsPage.specs.fingerboardWood")}: "{model.specs.fingerboardWood}"</li>}
+              {model?.specs?.pickups && <li>{t("detailsPage.specs.pickups")}: "{model.specs.pickups}"</li>}
+              {model?.specs?.tuners && <li>{t("detailsPage.specs.tuners")}: "{model.specs.tuners}"</li>}
+              {model?.specs?.scaleLength && <li>{t("detailsPage.specs.scaleLength")}: "{model.specs.scaleLength}"</li>}
+              {model?.specs?.bridge && <li>{t("detailsPage.specs.bridge")}: "{model.specs.bridge}"</li>}
             </ul>
           </Box>
         ) : (
         <Grid container spacing={3} sx={{ mt: 2 }}>
-        {model?.musicians?.map((musician, idx) => (
-            <Grid item xs={12} sm={6} md={4} key={idx}>
-            <MusicianCard musician={musician} />
-            </Grid>
-        ))}
-        </Grid>
-
+            {model?.musicians?.length ? (
+              model.musicians.map((musician, idx) => (
+                <Grid item xs={12} sm={6} md={4} key={idx}>
+                  <MusicianCard musician={musician} />
+                </Grid>
+              ))
+            ) : (
+              <Grid item xs={12}>
+                <Typography color="text.secondary">
+                  {t("detailsPage.noMusicians")}
+                </Typography>
+              </Grid>
+            )}
+          </Grid>
         )}
       </Box>
-
       <Footer
           siteLogoSrc={siteLogo}
           siteLogoLabel="VibeStrings"
