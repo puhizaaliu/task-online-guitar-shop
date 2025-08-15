@@ -160,52 +160,85 @@ export default function Hero({
               }}
             >
             {mode === "logo" ? (
-                // Gradient + centered brand logo
-                <Box
-                    sx={{
-                    width: "700px",
-                    height: "600px",
-                    background: "linear-gradient(180deg, #FF8C60, #FF5B1C)",
-                    display: "flex",
-                    alignItems: "flex-start",
-                    justifyContent: "center",
-                    borderTopLeftRadius: curveRight ? { md: "0%" } : 0,
-                    borderBottomLeftRadius: curveRight ? { md: "390px" } : 0,
-                    borderTopRightRadius: !curveRight ? { md: "0%" } : 0,
-                    borderBottomRightRadius: curveRight ? { md: "160px" } : 0,
-                    marginTop: 20,
-                    marginLeft: -10,
-                    }}
-                >
-                    <Box
-                    component="img"
-                    src={imageSrc}
-                    alt={imageAlt}
-                    sx={{
-                        width: "65%",
-                        height: "65%",
-                        objectFit: "contain",
-                        mt: 5,
-                        ml: 5,
-                        opacity: "40%"
-                    }}
-                    />
+  // Logo mode
+  <Box
+    sx={{
+      width: "700px",
+      height: "600px",
+      background: "linear-gradient(180deg, #FF8C60, #FF5B1C)",
+      display: "flex",
+      alignItems: "flex-start",
+      justifyContent: "center",
+      borderTopLeftRadius: curveRight ? { md: "0%" } : 0,
+      borderBottomLeftRadius: curveRight ? { md: "390px" } : 0,
+      borderTopRightRadius: !curveRight ? { md: "0%" } : 0,
+      borderBottomRightRadius: curveRight ? { md: "160px" } : 0,
+      marginTop: 20,
+      marginLeft: -10,
+    }}
+  >
+    <Box
+      component="img"
+      src={imageSrc}
+      alt={imageAlt}
+      sx={{
+        width: "65%",
+        height: "65%",
+        objectFit: "contain",
+        mt: 5,
+        ml: 5,
+        opacity: "40%",
+      }}
+    />
+  </Box>
+) : mode === "details" ? (
+  // Details mode
+  <Box
+    sx={{
+      width: "700px",
+      height: "600px",
+      background: "linear-gradient(180deg, #FF8C60, #FF5B1C)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      borderTopLeftRadius: curveRight ? { md: "0%" } : 0,
+      borderBottomLeftRadius: curveRight ? { md: "390px" } : 0,
+      borderTopRightRadius: !curveRight ? { md: "0%" } : 0,
+      borderBottomRightRadius: curveRight ? { md: "160px" } : 0,
+      marginTop: 20,
+      marginLeft: -10,
+    }}
+  >
+    <Box
+      component="img"
+      src={imageSrc}
+      alt={imageAlt}
+      sx={{
+        width: "65%",
+        height: "65%",
+        objectFit: "contain",
+        transform: "rotate(-45deg)", 
+        opacity: 1, 
+        mt: -10,
+        mr:-10,
+      }}
+    />
+  </Box>
+) : (
+  // Default mode
+  <Box
+    component="img"
+    src={imageSrc}
+    alt={imageAlt}
+    sx={{
+      width: "100%",
+      height: "100%",
+      objectFit: imageFit,
+      objectPosition: "bottom",
+    }}
+  />
+)}
 
-                </Box>
-                ) : (
-                // Default hero image behavior
-                <Box
-                    component="img"
-                    src={imageSrc}
-                    alt={imageAlt}
-                    sx={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: imageFit,
-                    objectPosition: "bottom"
-                    }}
-                />
-            )}
             </Box>
             
           )}

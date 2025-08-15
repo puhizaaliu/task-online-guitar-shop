@@ -9,7 +9,7 @@ import Footer from "../components/Footer";
 import {Box,Typography,MenuItem,Select,InputBase,IconButton,} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
-import { Grid, Card, CardMedia, CardContent } from "@mui/material";
+import { Card } from "@mui/material";
 import placeholderImg from "../assets/placeholder.jpg";
 
 export default function GuitarModels() {
@@ -192,6 +192,7 @@ export default function GuitarModels() {
                     <Card
                         key={model.id}
                         elevation={3}
+                        onClick={() => navigate(`/brands/${id}/models/${model.id}`)}
                         sx={{
                         borderRadius: 1,
                         width: "400px", // consistent card width
