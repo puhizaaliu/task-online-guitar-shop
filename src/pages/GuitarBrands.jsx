@@ -16,13 +16,14 @@ import AppStoreBadge from "../assets/app-store-badge.png";
 import AppScreen1 from "../assets/app-screen-1.png";
 import AppScreen2 from "../assets/app-screen-2.png";
 import Footer from "../components/Footer"; 
+import { useTranslation } from "react-i18next";
 
 export default function GuitarBrands() {
   const navigate = useNavigate();
   const { data, loading, error } = useQuery(GET_BRANDS);
   const brands = data?.findAllBrands ?? [];
+  const { t } = useTranslation();
 
-  // Decide what to show just for the brands area
   // eslint-disable-next-line
   let gridContent = null;
   if (loading) {
@@ -85,10 +86,10 @@ export default function GuitarBrands() {
       {/* section 1 — hero */}
         <Hero
         siteLogoSrc={siteLogo}
-        titleStart="Browse top quality"
-        titleHighlight="Guitars"
-        titleEnd="online"
-        subtitle="Explore 50k+ latest collections of branded guitars online with VibeStrings."
+        titleStart={t("hero.titleStart")}
+        titleHighlight={t("hero.titleHighlight")}
+        titleEnd={t("hero.titleEnd")}
+        subtitle={t("hero.subtitle")}
         variant="photo"
         imageSrc={heroImg}       
         imageFit="cover"
@@ -100,13 +101,13 @@ export default function GuitarBrands() {
         <Container maxWidth="lg">
             <Box sx={{ textAlign: "center", mb: 4 }}>
             <Typography variant="h3" sx={{ mb: 1, fontWeight: 600 }}>
-                Featuring the{" "}
+                 {t("brandsSection.headingStart")}{" "}
                 <Box component="span" sx={{ color: "primary.main", fontWeight: 700 }}>
-                Best Brands
+                 {t("brandsSection.headingHighlight")}
                 </Box>
             </Typography>
             <Typography sx={{ color: "text.secondary" }}>
-                Select your preferred brand and explore our exquisite collection.
+                {t("brandsSection.subtext")}
             </Typography>
             </Box>
 
@@ -134,7 +135,7 @@ export default function GuitarBrands() {
                     "&:hover": { transform: "translateY(-3px)" },
                     }}
                 >
-                    {b.image && <Box component="img" src={b.image} alt={b.name || "Brand"} />}
+                    {b.image && <Box component="img" src={b.image} alt={b.name || t("brandsSection.altBrand")} />}
                 </Box>
                 </Grid>
             ))}
@@ -145,9 +146,9 @@ export default function GuitarBrands() {
         <Box sx={{ backgroundColor: "#111", py: 8 }}>
         <Container maxWidth="lg">
             <Typography variant="h3" align="center" sx={{ color: "white", fontWeight: 400, mb: 10 }}>
-            Why try{" "}
+              {t("whyTry.titleStart")}{" "}
             <Box component="span" sx={{ color: "#ff6a00", fontWeight: 400 }}>
-                VibeStrings?
+              {t("whyTry.titleEnd")}{" "}
             </Box>
             </Typography>
 
@@ -168,10 +169,10 @@ export default function GuitarBrands() {
                     <GridViewRoundedIcon sx={{ fontSize: 40, color: "gray" }} />
                 </Box>
                 <Typography variant="subtitle1" sx={{ color: "white", fontWeight: "normal", fontSize:20, pt: 2}}>
-                    SMOOTH BROWSING
+                    {t("whyTry.feature1.title")}
                 </Typography>
                 <Typography variant="body2" sx={{ color: "#999", maxWidth: 260, opacity: 0.5 }}>
-                    Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit.
+                   {t("whyTry.feature1.desc")}
                 </Typography>
                 </Stack>
             </Grid>
@@ -191,10 +192,10 @@ export default function GuitarBrands() {
                     <LocalShippingRoundedIcon sx={{ fontSize: 40, color: "gray" }} />
                 </Box>
                 <Typography variant="subtitle1" sx={{ color: "white", fontWeight: "normal", fontSize:20, pt: 2 }}>
-                    EASY DELIVERY
+                    {t("whyTry.feature2.title")}
                 </Typography>
                 <Typography variant="body2" sx={{ color: "#999", maxWidth: 260, opacity: 0.5 }}>
-                    Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit.
+                    {t("whyTry.feature2.desc")}
                 </Typography>
                 </Stack>
             </Grid>
@@ -214,10 +215,10 @@ export default function GuitarBrands() {
                     <PaymentRoundedIcon sx={{ fontSize: 40, color: "gray" }} />
                 </Box>
                 <Typography variant="subtitle1" sx={{ color: "white", fontWeight: "normal", fontSize:20, pt: 2 }}>
-                    SWIFT PAYMENTS
+                    {t("whyTry.feature3.title")}
                 </Typography>
                 <Typography variant="body2" sx={{ color: "#999", maxWidth: 260, opacity: 0.5 }}>
-                    Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit.
+                    {t("whyTry.feature3.desc")}
                 </Typography>
                 </Stack>
             </Grid>
@@ -233,16 +234,16 @@ export default function GuitarBrands() {
           <Grid item xs={12} md={6}>
             <Box sx={{ ml: -10 }}>
                 <Typography variant="h3" sx={{ fontSize: 40, mb: 1, textAlign: "center" }}>
-                Browse and buy your{" "}
+                    {t("appSection.line1")}
                 </Typography>
                 <Typography variant="h3" sx={{ fontSize: 40, mb: 1, textAlign: "center" }}>
                 <Box component="span" sx={{ color: "#ff6a00", fontWeight: 500 }}>
-                    favorite guitars
+                   {t("appSection.line2Highlight")}
                 </Box>
-                {" "}with 
+                {t("appSection.with")} 
                 </Typography>
                 <Typography variant="h3" sx={{ fontSize: 40, textAlign: "center"}}>
-                 VibeStrings.
+                 {t("siteName")}.
                 </Typography>
 
                 <Stack direction="row" spacing={8} mt={6}>
@@ -305,7 +306,7 @@ export default function GuitarBrands() {
               <Box
                 component="img"
                 src={AppScreen1}
-                alt="App Screenshot 1"
+                alt={t("appSection.alt1")}
                 sx={{
                   height: 500,
                   borderRadius: 2,
@@ -318,7 +319,7 @@ export default function GuitarBrands() {
               <Box
                 component="img"
                 src={AppScreen2}
-                alt="App Screenshot 2"
+                alt={t("appSection.alt2")}
                 sx={{
                   height: 500,
                   mb: -10,
@@ -335,9 +336,9 @@ export default function GuitarBrands() {
       </Container>
     </Box>   
     <Footer
-  siteLogoSrc={siteLogo}
-  siteLogoLabel="VibeStrings"
-/>      
+      siteLogoSrc={siteLogo}
+      siteLogoLabel="VibeStrings"
+    />      
     </>
   );
 }

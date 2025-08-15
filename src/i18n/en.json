@@ -1,0 +1,94 @@
+{
+  "siteName": "VibeStrings",
+  "backToList": "Back To List",
+  "pages": "PAGES",
+  "store": "Store",
+  "collections": "Collections",
+  "support": "Support",
+  "product": "PRODUCT",
+  "terms": "Terms",
+  "privacyPolicy": "Privacy Policy",
+  "copyright": "Copyright",
+  "followUs": "FOLLOW US",
+  "contactEmail": "Enquiry@VibeStrings.com",
+  "location": "San Francisco",
+  "hero": {
+    "titleStart": "Browse top quality",
+    "titleHighlight": "Guitars",
+    "titleEnd": "online",
+    "subtitle": "Explore 50k+ latest collections of branded guitars online with VibeStrings."
+  },
+  "brandsSection": {
+    "headingStart": "Featuring the",
+    "headingHighlight": "Best Brands",
+    "subtext": "Select your preferred brand and explore our exquisite collection.",
+    "altBrand": "Brand"
+ },
+  "whyTry": {
+    "titleStart": "Why try",
+    "titleEnd": " VibeStrings?",
+    "feature1": {
+      "title": "SMOOTH BROWSING",
+      "desc": "Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit."
+    },
+    "feature2": {
+      "title": "EASY DELIVERY",
+      "desc": "Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit."
+    },
+    "feature3": {
+      "title": "SWIFT PAYMENTS",
+      "desc": "Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit."
+    }
+  },
+  "appSection": {
+    "line1": "Browse and buy your",
+    "line2Highlight": "favorite guitars",
+    "with": " with",
+    "altPlay": "Get it on Google Play",
+    "altStore": "Download on the App Store",
+    "alt1": "App Screenshot 1",
+    "alt2": "App Screenshot 2"
+  },
+  "modelPage": {
+    "titleStart": "Play like a",
+    "titleHighlight": "Rock star",
+    "selectionTitleStart": "Check out the",
+    "selectionTitleHighlight": "Selection",
+    "filterPlaceholder": "Filter by type",
+    "filterAll": "ALL",
+    "searchPlaceholder": "Search by name",
+    "paginationText": "Showing {{count}} results from {{total}}"
+  },
+  "brandDescriptions": {
+    "fender": "Founded in 1946, Fender revolutionized the electric guitar with models like the Stratocaster and Telecaster. Known for their bright tone and smooth playability, Fender guitars have been used by legends across genres.",
+    "ibanez": "With a legacy dating back to the 1950s, Ibanez blends expert craftsmanship with cutting-edge innovation to deliver guitars that inspire creativity and elevate your performance.",
+    "gibson": "Since 1902, Gibson has been an icon in the guitar world, famous for classics like the Les Paul and SG. With rich tone and bold style, Gibson guitars are a favorite among rock and blues legends.",
+    "prs": "Paul Reed Smith (PRS) Guitars are known for their flawless craftsmanship, versatile tone, and eye-catching finishes. Founded in 1985, PRS bridges the gap between precision engineering and expressive playability.",
+    "martin_co": "Established in 1833, Martin & Co. is the pioneer of the modern acoustic guitar. Renowned for their craftsmanship and deep, resonant tone, Martin guitars have stood the test of time.",
+    "yamaha": "Yamaha combines innovative design and consistent quality across a wide range of acoustic and electric guitars. Whether you're a beginner or a pro, Yamaha offers reliable instruments with excellent sound.",
+    "gretsch": "Gretsch guitars are famous for their vintage style, jangly tone, and hollow-body design. Popular among rockabilly and surf players, Gretsch has a timeless charm.",
+    "epiphone": "As Gibson's trusted sibling brand, Epiphone offers affordable versions of iconic designs without compromising tone or style. Perfect for players who want quality on a budget.",
+    "jackson": "Jackson guitars are built for speed, precision, and power. With sleek bodies and high-output pickups, they're favored by metal and hard rock guitarists worldwide.",
+    "music_man": "Music Man guitars and basses are known for their ergonomic design, clear tone, and professional-grade craftsmanship. A top choice for touring musicians and studio pros."
+  },
+  "common": {
+    "loading": "Loading...",
+    "errorLoading": "Error loading data."
+  },
+  "detailsPage": {
+    "tabs": {
+      "specs": "Specification",
+      "musicians": "Who plays it?"
+    },
+    "specs": {
+      "bodyWood": "Body Wood",
+      "neckWood": "Neck Wood",
+      "fingerboardWood": "Fingerboard",
+      "pickups": "Pickups",
+      "tuners": "Tuners",
+      "scaleLength": "Scale Length",
+      "bridge": "Bridge"
+    },
+    "noMusicians": "No musicians listed for this model."
+  }
+}

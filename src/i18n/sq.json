@@ -1,0 +1,97 @@
+{
+  "siteName": "VibeStrings",
+  "backToList": "Kthehu te lista",
+  "pages": "FAQET",
+  "store": "Dyqani",
+  "collections": "Koleksionet",
+  "support": "Mbështetje",
+  "product": "PRODUKTI",
+  "terms": "Kushtet",
+  "privacyPolicy": "Politika e privatësisë",
+  "copyright": "E drejta e autorit",
+  "followUs": "NA NDIQNI",
+  "contactEmail": "Kontakt@VibeStrings.com",
+  "location": "San Francisko",
+  "hero": {
+    "titleStart": "Shfletoni",
+    "titleHighlight": "Kitaret",
+    "titleEnd": "më cilësore online",
+    "subtitle": "Eksploroni mbi 50 mijë koleksione të reja të kitarave më të njohura me VibeStrings."
+  },
+  "brandsPage": {
+    "error": "Diçka shkoi keq gjatë ngarkimit të markave: {{message}}"
+  },
+  "brandsSection": {
+    "headingStart": "Markat",
+    "headingHighlight": "më të mira",
+    "subtext": "Zgjidhni markën tuaj të preferuar dhe eksploroni koleksionin tonë.",
+    "altBrand": "Markë"
+  },
+  "whyTry": {
+    "titleStart": "Pse të zgjidhni",
+    "titleEnD": " VibeStrings?",
+    "feature1": {
+      "title": "SHFLETIM I LEHTË",
+      "desc": "Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit."
+    },
+    "feature2": {
+      "title": "DËRGESA E LEHTË",
+      "desc": "Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit."
+    },
+    "feature3": {
+      "title": "PAGESA TË SHPEJTA",
+      "desc": "Lorem Ipsum Dolor Sit Amet, Consectetur Adipisicing Elit."
+    }
+  },
+  "appSection": {
+    "line1": "Shfletoni dhe blini",
+    "line2Highlight": "kitarat tuaja të preferuara",
+    "with": " me",
+    "altPlay": "Shkarko në Google Play",
+    "altStore": "Shkarko në App Store",
+    "alt1": "Screenshot i aplikacionit 1",
+    "alt2": "Screenshot i aplikacionit 2"
+  },
+  "modelPage": {
+    "titleStart": "Luaj si një",
+    "titleHighlight": "Yll rocku",
+    "selectionTitleStart": "Shfletoni",
+    "selectionTitleHighlight": "Koleksioinin",
+    "filterPlaceholder": "Filtro sipas llojit",
+    "filterAll": "TË GJITHA",
+    "searchPlaceholder": "Kërko me emër",
+    "paginationText": "Duke shfaqur {{count}} rezultate nga gjithsej {{total}}"
+  },
+  "brandDescriptions": {
+    "fender": "E themeluar në 1946, Fender revolucionarizoi kitarën elektrike me modele si Stratocaster dhe Telecaster. E njohur për tingullin e ndritshëm dhe luajtshmërinë e butë.",
+    "ibanez": "Me trashëgimi që nga vitet 1950, Ibanez bashkon mjeshtërinë me inovacionin për të frymëzuar krijimtarinë dhe performancën.",
+    "gibson": "Që nga 1902, Gibson është ikonë me modelet Les Paul dhe SG. Me tingull të pasur dhe stil të guximshëm, e preferuar nga legjendat e rock/blues.",
+    "prs": "PRS njihet për mjeshtëri të përsosur, tingull të gjithanshëm dhe përfundime tërheqëse. Themeluar në 1985.",
+    "martin_co": "E themeluar në 1833, Martin & Co. është pioniere e kitarës moderne akustike me tingull të thellë e rezonant.",
+    "yamaha": "Yamaha ofron dizajn inovativ dhe cilësi të qëndrueshme për kitarë akustike dhe elektrike—nga fillestarët te profesionistët.",
+    "gretsch": "Gretsch njihet për stilin vintage, tingullin jangly dhe trupat hollow. E dashur nga rockabilly dhe surf.",
+    "epiphone": "Si markë motër e Gibson-it, Epiphone sjell versione më të lira të modeleve ikonike pa kompromentuar stilin.",
+    "jackson": "Jackson ndërtohet për shpejtësi, precizion dhe fuqi—e preferuar nga kitaristët e metalit dhe hard rock.",
+    "music_man": "Music Man njihet për ergonomi, tingull të qartë dhe mjeshtëri profesionale—zgjedhje për turne dhe studio."
+  },
+  "common": {
+    "loading": "Duke u ngarkuar...",
+    "errorLoading": "Gabim gjatë ngarkimit të të dhënave."
+  },
+  "detailsPage": {
+    "tabs": {
+      "specs": "Specifikimet",
+      "musicians": "Kush e luan?"
+    },
+    "specs": {
+      "bodyWood": "Druri i trupit",
+      "neckWood": "Druri i qafës",
+      "fingerboardWood": "Fingerboard",
+      "pickups": "Pickups",
+      "tuners": "Tuners",
+      "scaleLength": "Gjatësia e shkallës",
+      "bridge": "Ura"
+    },
+    "noMusicians": "Nuk ka muzikantë të listuar për këtë model."
+  }
+}

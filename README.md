@@ -1,70 +1,115 @@
-# Getting Started with Create React App
+# VibeStrings — React + GraphQL + Apollo Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A small guitar catalog built with **React**, **Apollo Client**, and **GraphQL**, featuring a **multi-language UI (English & Albanian)**. The app has three main pages:
 
-## Available Scripts
+- **Brands** (`/`) – list of guitar brands (from GraphQL)
+- **Models** (`/brands/:brandId/models`) – models for a selected brand, with search, filter, and pagination
+- **Details** (`/brands/:brandId/models/:modelId`) – model details with specifications and musicians
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React 18 + React Router v6
+- GraphQL data fetching via Apollo Client
+- **i18n** (English + Albanian) with a **language switcher in the footer**
+- Translated static text across pages & components
+- Brand descriptions backed by i18n, with a **safe local fallback file**
+- Model list **search**, **type filter**, and **pagination**
+- Clean MUI (Material UI v5) interface
+- Safe image URL handling + placeholder fallback
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React 18**
+- **Apollo Client 3** (GraphQL)
+- **React Router v6**
+- **Material UI v5**
+- **i18next + react-i18next**
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Node.js** v18+ (LTS recommended)
+- **npm**
+- A running **GraphQL API** compatible with the queries used in `src/graphql/queries.js`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Quick Start
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+# 1) Install dependencies
+npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# 2) Configure the GraphQL endpoint
+echo "REACT_APP_GRAPHQL_URI=http://localhost:4000/graphql" > .env
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# 3) Start the dev server
+npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+- CRA dev server: http://localhost:3000  
 
-## Learn More
+> Check your `src/apollo/client.js` to see which env name it reads. A robust pattern is:
+> ```js
+> const uri =
+>   (import.meta?.env && import.meta.env.VITE_GRAPHQL_URI) ||
+>   process.env.REACT_APP_GRAPHQL_URI ||
+>   "http://localhost:4000/graphql";
+> ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Project Structure (key parts)
 
-### Code Splitting
+```
+src/
+  apollo/
+    client.js                # Apollo Client setup (reads GraphQL URI from .env)
+  assets/                    # Images (logo, hero, badges, placeholders, etc.)
+  components/
+    Footer.jsx               # Footer with language switcher
+    Hero.jsx                 # Reusable hero with i18n fallbacks
+    MusicianCard.jsx
+    brandDescriptions.js     # JS fallback for brand blurbs (if translation missing)
+  graphql/
+    queries.js               # GET_BRANDS, GET_BRAND_DETAILS, GET_BRAND_MODELS, FIND_UNIQUE_MODEL
+  i18n/
+    en.json                  # English translations
+    sq.json                  # Albanian translations
+    i18n.js                  # i18next initialization
+  pages/
+    GuitarBrands.jsx         # Page 1
+    GuitarModels.jsx         # Page 2
+    GuitarDetails.jsx        # Page 3
+  App.jsx / index.jsx        # App entry (ensure it imports "./i18n/i18n")
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Routes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- `/` – **Brands** page (hero, brand grid, “why try” section, app promo section)
+- `/brands/:brandId/models` – **Models** for selected brand (search, type filter, pagination)
+- `/brands/:brandId/models/:modelId` – **Model Details** (tabs: specs, musicians)
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## GraphQL Queries
 
-### Advanced Configuration
+Defined in `src/graphql/queries.js`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- `GET_BRANDS`
+- `GET_BRAND_DETAILS`
+- `GET_BRAND_MODELS`
+- `SEARCH_MODELS`
+- `FIND_UNIQUE_MODEL`
 
-### Deployment
+> Ensure your backend implements these queries and fields used by pages/components (e.g., `findAllBrands`, `findUniqueBrand`, `findBrandModels`, `findUniqueModel`).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

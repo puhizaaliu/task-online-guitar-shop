@@ -8,7 +8,7 @@ import { apolloClient } from "./apollo/client";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import theme from "./theme";
-
+import "./i18n/i18n";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
