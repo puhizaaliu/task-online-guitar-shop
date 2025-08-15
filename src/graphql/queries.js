@@ -39,7 +39,7 @@ export const GET_BRAND_MODELS = gql`
   }
 `;
 
-//for the search bar:
+//for the search bar
 export const SEARCH_MODELS = gql`
   query SearchModels($brandId: String!, $name: String!) {
     searchModels(brandId: $brandId, name: $name) {
@@ -48,6 +48,34 @@ export const SEARCH_MODELS = gql`
       type
       image
       price
+    }
+  }
+`;
+
+//get the details of the specific model 
+export const FIND_UNIQUE_MODEL = gql`
+  query FindUniqueModel($brandId: ID!, $modelId: ID!) {
+    findUniqueModel(brandId: $brandId, modelId: $modelId) {
+      id
+      name
+      type
+      image
+      description
+      price
+      specs {
+        bodyWood
+        neckWood
+        fingerboardWood
+        pickups
+        tuners
+        scaleLength
+        bridge
+      }
+      musicians {
+        name
+        musicianImage
+        bands
+      }
     }
   }
 `;
